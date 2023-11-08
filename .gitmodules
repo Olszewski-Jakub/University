@@ -1,0 +1,9 @@
+[submodule "freshman/CT103"]
+	path = freshman/CT103
+	url = https://github.com/Olszewski-Jakub/CT103.git
+[submodule "freshman/CT103-Programming"]
+	path = freshman/CT103-Programming
+	url = https://github.com/Olszewski-Jakub/CT103-Programming.git
+[submodule "freshman/CT11114-webDevelopment"]
+	path = freshman/CT11114-webDevelopment
+	url = https://github.com/Olszewski-Jakub/CT11114-webDevelopment.git
