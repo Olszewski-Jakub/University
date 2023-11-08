@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roll dice</title>
+    <link href="https://www.favicon.cc/favicon/659/576/favicon.png" rel="icon" type="image/x-icon">
+    <script>
+      function roll3Dice(check) {
+        var dice1 = Math.floor(Math.random() * 6) + 1;
+        var dice2 = Math.floor(Math.random() * 6) + 1;
+        var dice3 = Math.floor(Math.random() * 6) + 1;
+        var sum = dice1 + dice2 + dice3;
+        if (check) {
+          document.getElementById("dice1").innerHTML = "Dice 1 = " + dice1;
+          document.getElementById("dice2").innerHTML = "Dice 2 = " + dice2;
+          document.getElementById("dice3").innerHTML = "Dice 3 = " + dice3;
+          document.getElementById("sum").innerHTML =
+            "The sum of 3 dice is " + sum;
+        }
+
+        return sum;
+      }
+      function rollIt5000Times() {
+        var result = [0, 0, 0];
+        for (var i = 0; i < 5000; i++) {
+          switch (roll3Dice(false)) {
+            case 18:
+              result[0]++;
+              break;
+            case 11:
+              result[1]++;
+              break;
+            case 3:
+              result[2]++;
+              break;
+          }
+        }
+        document.getElementById("info").innerHTML =
+          "Results of rolling 3 dice 5000 times";
+        document.getElementById("result18").innerHTML =
+          "The number of times the sum of 3 dice is 18 is " + result[0];
+        document.getElementById("result11").innerHTML =
+          "The number of times the sum of 3 dice is 11 is " + result[1];
+        document.getElementById("result3").innerHTML =
+          "The number of times the sum of 3 dice is 3 is " + result[2];
+      }
+    </script>
+  </head>
+  <body>
+    <div style="display: flex;
+    margin: auto;
+    width: 50%;
+    padding: 10px;">
+        <div style="margin-right: 25px; margin-left: 25px; border:1px solid black; padding: 15px;">
+            <h2>Part 1 - Roll 3 dice once</h1>
+            <p id="dice1">Results will diplsay here</p>
+            <p id="dice2"></p>
+            <p id="dice3"></p>
+            <p id="sum"></p>
+            <button id="rollDice" onclick="roll3Dice(true)">Roll 3 Dice</button>
+          </div>
+          <div style="border:1px solid black;padding: 15px;">
+            <h2>Part 2 - Roll 3 dice 5000 times</h1>
+            <p id="info">Results will display here</p>
+            <p id="result18"></p>
+            <p id="result11"></p>
+            <p id="result3"></p>
+            <button id="rollDice5000" onclick="rollIt5000Times()">
+              Roll 3 Dice 5000 Times
+            </button>
+          </div>
+        </body>
+    </div>
+    
+</html>

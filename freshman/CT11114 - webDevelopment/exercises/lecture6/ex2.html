@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function isPrime(n) {
+        for (var i = 2; i <= n / 2; i++) {
+          if (n % i == 0) return false;
+        }
+        return true;
+      }
+      function showPrimes() {
+        var output = "";
+        var num = 0;
+        for (var i = 2; i < 5000; i++) {
+          if (isPrime(i)) {
+            num++;
+            output += i;
+            if (num % 10 === 0) output += "<br>";
+            else output += " &nbsp; ";
+          }
+        }
+        document.getElementById("pOutput").innerHTML = output;
+      }
+    </script>
+  </head>
+  <body onload="showPrimes();">
+    <p>Here's some prime numbers:</p>
+    <p id="pOutput"></p>
+  </body>
+</html>

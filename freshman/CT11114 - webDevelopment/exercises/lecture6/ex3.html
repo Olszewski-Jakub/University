@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function showNums(input) {
+        var userInput = parseInt(input);
+        var result = "";
+        for (var i = 1; i <= userInput; i++) {
+          result += i + "<br>";
+        }
+        document.getElementById("output").innerHTML = result;
+      }
+
+      function showPrompt() {
+        var input = prompt("Enter a number:");
+        if (!isNaN(input)) {
+          if (parseInt(input) > 0 && parseInt(input) <= 100) {
+            alert("Thanks");
+            showNums(input);
+          } else {
+            alert("Number is not in range");
+          }
+        } else {
+          alert("That's not a number!");
+        }
+      }
+    </script>
+  </head>
+  <body onload="showPrompt()">
+    <p id="output"></p>
+  </body>
+</html>
