@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script>
+      function showResult(calcType, result) {
+        var num1 = document.getElementById("txtInputBox1").value;
+        var num2 = document.getElementById("txtInputBox2").value;
+        var toDisplay = "";
+        switch (calcType) {
+          case "add":
+            toDisplay = num1 + " + " + num2 + " = " + result;
+            break;
+          case "subtract":
+            toDisplay = num1 + " - " + num2 + " = " + result;
+            break;
+          case "multiply":
+            toDisplay = num1 + " × " + num2 + " = " + result;
+            break;
+          case "divide":
+            toDisplay = num1 + " ÷ " + num2 + " = " + result;
+            break;
+        }
+        document.getElementById("divOutput").innerHTML = toDisplay;
+      }
+
+      function checkValidNumber(num1, num2) {
+        if (num1.trim() === "" || num2.trim() === "") {
+          alert("Please input valid numbers.");
+          return false;
+        }
+        if (isNaN(num1) || isNaN(num2)) {
+          alert("Please input valid numbers.");
+          return false;
+        }
+        return true;
+      }
+
+      function add() {
+        var num1 = document.getElementById("txtInputBox1").value;
+        var num2 = document.getElementById("txtInputBox2").value;
+        if (checkValidNumber(num1, num2)) {
+          var result = parseInt(num1) + parseInt(num2);
+          showResult("add", result);
+        }
+      }
+
+      function subtract() {
+        var num1 = document.getElementById("txtInputBox1").value;
+        var num2 = document.getElementById("txtInputBox2").value;
+        if (checkValidNumber(num1, num2)) {
+          var result = parseInt(num1) - parseInt(num2);
+          showResult("subtract", result);
+        }
+      }
+
+      function divide() {
+        var num1 = document.getElementById("txtInputBox1").value;
+        var num2 = document.getElementById("txtInputBox2").value;
+        if (checkValidNumber(num1, num2)) {
+          var result = parseInt(num1) / parseInt(num2);
+          showResult("divide", result);
+        }
+      }
+
+      function multiply() {
+        var num1 = document.getElementById("txtInputBox1").value;
+        var num2 = document.getElementById("txtInputBox2").value;
+        if (checkValidNumber(num1, num2)) {
+          var result = parseInt(num1) * parseInt(num2);
+          showResult("multiply", result);
+        }
+      }
+
+      document.addEventListener("DOMContentLoaded", function () {
+        var buttons = document.querySelectorAll("#button-group button");
+        buttons.forEach(function (button) {
+          button.addEventListener("click", function () {
+            var id = this.id;
+            switch (id) {
+              case "button-add":
+                add();
+                break;
+              case "button-subtract":
+                subtract();
+                break;
+              case "button-multiply":
+                multiply();
+                break;
+              case "button-divide":
+                divide();
+                break;
+            }
+          });
+        });
+      });
+    </script>
+
+    <style>
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      #button-group {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      #button-group button {
+        margin: 5px;
+        width: 55px;
+        height: 55px;
+        border: 1px solid #000;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 20px;
+        font-weight: bold;
+      }
+
+      #divOutput {
+        margin-top: 20px;
+        font-size: 24px;
+        font-weight: bold;
+      }
+
+      #txtInputBox1,
+      #txtInputBox2 {
+        margin: 5px;
+        font-size: 16px;
+        padding: 10px;
+        width: 150px;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>The Little Calculator (TM)</h2>
+    <div style="display: flex">
+      <input type="text" id="txtInputBox1" />
+      <input type="text" id="txtInputBox2" />
+    </div>
+    <div id="button-group">
+      <button id="button-add">+</button>
+      <button id="button-subtract">-</button>
+      <button id="button-multiply">×</button>
+      <button id="button-divide">÷</button>
+    </div>
+    <div id="divOutput"></div>
+  </body>
+</html>
