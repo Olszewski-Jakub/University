@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function updateOutput() {
+        var txt = document.getElementById("txtUserInput").value; // text typed by user
+        var numchars = txt.length;
+        var txtOutput = "";
+        var currWord = ""; // initial word
+        var vowelCount = 0; // variable to count vowels
+        var digitSum = 0; // variable to sum up digits
+        for (var i = 0; i < numchars; i++) {
+          var currLetter = txt.substr(i, 1);
+
+          // Count vowels
+          if (/[aeiouAEIOU]/.test(currLetter)) {
+            vowelCount++;
+          }
+
+          // Check if the character is a digit and add it to the sum
+          if (!isNaN(currLetter) && currLetter !== " ") {
+            digitSum += parseInt(currLetter);
+          }
+
+          if (currLetter == " ") {
+            // end current word and start next one
+            txtOutput += currWord + "<br>";
+            currWord = "";
+          } else currWord += currLetter; // add letter to current word
+        }
+        if (currWord.length > 0)
+          // deal with any remaining word that didn't end with a space
+          txtOutput += currWord;
+
+        // Display the results
+        document.getElementById("pOutput").innerHTML =
+          txtOutput +
+          "<br>Vowel Count: " +
+          vowelCount +
+          "<br>Digit Sum: " +
+          digitSum;
+      }
+    </script>
+  </head>
+  <body>
+    <textarea
+      id="txtUserInput"
+      onkeyup="updateOutput();"
+      placeholder="Type your text here."
+    ></textarea
+    ><br />
+    <p id="pOutput">Your output will be shown here.</p>
+  </body>
+</html>
