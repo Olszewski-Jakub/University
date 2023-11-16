@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Character and Word Counter</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 20px;
+      }
+
+      textarea {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 10px;
+      }
+
+      #count-info {
+        color: #333;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Character and Word Counter</h1>
+    <label for="userInput">Type something:</label>
+    <textarea id="userInput" onkeyup="countCharactersAndWords()"></textarea>
+    <div id="count-info">Characters: 0 | Words: 0</div>
+
+    <script>
+      function countCharactersAndWords() {
+        var userInput = document.getElementById("userInput").value;
+        var charCount = 0;
+        var wordCount = 0;
+        var isWord = false;
+
+        for (var i = 0; i < userInput.length; i++) {
+          charCount++;
+
+          // Check if the current character is a space, newline, or tab
+          if (
+            userInput[i] === " " ||
+            userInput[i] === "\n" ||
+            userInput[i] === "\t"
+          ) {
+            isWord = false;
+          }
+          // Check if the current character is a letter or number
+          else if (!isWord) {
+            isWord = true;
+            wordCount++;
+          }
+        }
+
+        // Display the counts
+        var countInfo = document.getElementById("count-info");
+        countInfo.textContent =
+          "Characters: " + charCount + " | Words: " + wordCount;
+      }
+    </script>
+  </body>
+</html>

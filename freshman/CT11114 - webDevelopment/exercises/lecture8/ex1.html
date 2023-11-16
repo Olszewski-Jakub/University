@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function updateOutput() {
+        var txt = document.getElementById("txtUserInput").value; // text typed by user
+        var numchars = txt.length;
+        var txtOutput = "";
+        for (var i = numchars; i >= 0; i--) {
+          var currLetter = txt.substr(i, 1);
+          txtOutput += currLetter + "<br>";
+        }
+
+        document.getElementById("pOutput").innerHTML = txtOutput; // show result to user
+      }
+    </script>
+  </head>
+  <body>
+    <textarea
+      id="txtUserInput"
+      onkeyup="updateOutput();"
+      value="Type your text here."
+    ></textarea
+    ><br />
+    <p id="pOutput">Your output will be shown here.</p>
+  </body>
+</html>
