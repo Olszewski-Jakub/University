@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Input to Table</title>
+    <style>
+      table {
+        border-collapse: collapse;
+      }
+
+      table,
+      th,
+      td {
+        border: 3px solid black;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        text-align: left;
+      }
+    </style>
+  </head>
+  <body>
+    <h2>Input to Table</h2>
+
+    <input type="text" id="inputField" placeholder="Type something..." />
+    <button onclick="addToTable()">Process</button>
+
+    <table id="dataTable">
+      <thead>
+        <tr>
+          <th>Text</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Table body will be dynamically populated -->
+      </tbody>
+    </table>
+
+    <script>
+      function addToTable() {
+        // Get the input value
+        var inputValue = document.getElementById("inputField").value;
+
+        // If the input is not empty
+        if (inputValue.trim() !== "") {
+          // Create a new table row
+          var newRow = document.createElement("tr");
+
+          // Create a new table data cell
+          var cell = document.createElement("td");
+
+          // Set the cell content to the input value
+          cell.textContent = inputValue;
+
+          // Append the cell to the row
+          newRow.appendChild(cell);
+
+          // Get the table body and append the new row
+          var tableBody = document.querySelector("#dataTable tbody");
+          tableBody.appendChild(newRow);
+
+          // Clear the input field
+          document.getElementById("inputField").value = "";
+        }
+      }
+    </script>
+  </body>
+</html>
