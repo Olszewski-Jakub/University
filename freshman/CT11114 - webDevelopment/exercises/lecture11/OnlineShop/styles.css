@@ -1,0 +1,167 @@
+:root {
+    --primary-color: #2B2E4A; /* Dark Blue */
+    --secondary-color: #E84545; /* Red */
+    --tertiary-color: #903749; /* Dark Red */
+    --quaternary-color: #53354A; /* Purple */
+    --quinary-color: #F5E6CA; /* Cream */
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: var(--primary-color);
+
+}
+
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+.header{
+    background-color: var(--primary-color);
+    text-align: center;
+    padding: 10px;
+}
+
+.about-section, .contact-section h2 {
+    padding-top: 50px;
+    text-align: center;
+    background-color: var(--primary-color);
+    color: white;
+}
+.about-section p {
+    padding-top: 10px;
+    text-align: center;
+    margin-right: 20px;
+    margin-left: 20px;
+    background-color: var(--primary-color);
+    color: white;
+}
+.contact-section  {
+    padding: 20px;
+    margin: 20px;
+}
+
+.contact-section ul {
+    list-style-type: none;
+    padding: 10;
+}
+
+.contact-section li {
+    margin-bottom: 10px;
+    color: white;
+}
+.contact-section h3 {
+    margin-bottom: 20px;
+    margin-top: 50px;
+    color: white;
+}
+/*Navigation*/
+.nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--secondary-color);
+    padding: 10px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Add a subtle shadow */
+}
+
+.nav .logo {
+    font-family: 'Arial', sans-serif; /* Use a modern sans-serif font */
+    font-size: 24px; /* Increase the font size */
+    color: #333; /* Dark grey color */
+}
+
+.nav .navigation-links a {
+    text-decoration: none;
+    color: #333; /* Dark grey color */
+    transition: color 0.3s ease;
+    text-transform: uppercase; /* Make the text uppercase */
+    font-weight: bold; /* Make the text bold */
+    margin-left: 15px;
+    border-right: 1px solid #333; /* Add a right border */
+    padding-right: 15px; /* Add some padding to the right */
+}
+
+.nav .navigation-links a:last-child {
+    border-right: none; /* Remove the right border from the last link */
+}
+
+.nav .navigation-links a:hover {
+    color: white;
+}
+.nav .navigation-links a.active {
+    color: white; /* Change the color of the active link */
+    font-weight: bold; /* Make the text bold */
+}
+/*Footer*/
+.footer {
+    background-color: var(--quaternary-color);
+}
+
+.contact-info p {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 25px;
+    color: var(--quinary-color);
+
+}
+
+.contact-info i {
+    transition: color 0.3s ease;
+}
+
+.contact-info p:hover {
+    color: #ff6347;
+}
+
+.all-rights-reserved {
+    color: white;
+    text-align: center;
+    padding: 10px;
+}
+/*Updates and news Cards*/
+.news-updates-card {
+    background-color: #f0f0f0; /* Set a background color */
+    border-radius: 10px; /* Add rounded corners */
+    padding: 20px; /* Add some padding */
+    margin-bottom: 20px; /* Add some margin at the bottom */
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2); /* Add some shadow to create a card effect */
+    margin: 15px; /* Add margin around the card */
+}
+
+.news-updates-card:hover {
+    background-color: #e0e0f0; /* Change the background color when hovered over */
+}
+
+.news-updates-card h3 {
+    text-align: center; /* Center the title text */
+    margin-bottom: 15px; /* Add some margin at the bottom of the title */
+}
+
+.news-updates-card p {
+    text-align: justify; /* Justify the description text */
+    line-height: 1.6; /* Increase the line height for better readability */
+}
+.news-updates-card .date {
+    font-size: 0.8em; /* Make the date text smaller */
+    color: #888; /* Make the date text a lighter color */
+    text-align: right; /* Align the date text to the right */
+}
+h2.news {
+    text-align: center;
+    color:white;
+    margin-bottom: 20px;
+}
+.news-updates-card h3{
+    text-align: center;
+    color: black;
+    margin-bottom: 20px;
+}
