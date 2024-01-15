@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script>
+      function updateClock() {
+        var now = new Date(); // get the current date and time
+        var h = now.getHours(); // get the hours from the date
+        var m = now.getMinutes(); // get the minutes from the date
+        var s = now.getSeconds(); // get the seconds from the date
+
+        // add a zero in front of numbers<10
+        h = checkTime(h);
+        m = checkTime(m);
+        s = checkTime(s);
+
+        document.getElementById("theClock").innerHTML = h + ":" + m + ":" + s; // set the content of the p element with id="theClock" to the current time
+        setTimeout(updateClock, 1000); // call the updateClock function every 1000 milliseconds (1 second)
+      }
+
+      function checkTime(i) {
+        if (i < 10) {
+          i = "0" + i;
+        } // add zero in front of numbers < 10
+        return i;
+      }
+    </script>
+  </head>
+  <body onload="updateClock();">
+    <p id="theClock" style="text-align: center; font-size: 120px">00:00:00</p>
+  </body>
+</html>
