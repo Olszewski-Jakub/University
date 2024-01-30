@@ -9,7 +9,7 @@
 
 #define MAX_COUNTRIES 100
 #define MAX_COUNTRY_NAME_LENGTH 100
-
+// Struct to store country data
 typedef struct {
     char name[MAX_COUNTRY_NAME_LENGTH];
     int population;
@@ -98,9 +98,6 @@ void question_three() {
 
 void question_four() {
     FILE *filePtr;
-    char newCountry[100];
-    int population;
-
     // Open the file in append mode
     filePtr = fopen(
             "C:\\Users\\jolsz\\uni\\freshman\\CT103 - Programming\\assignments\\Assignment16_JakubOlszewski_23710521\\countries.txt",
