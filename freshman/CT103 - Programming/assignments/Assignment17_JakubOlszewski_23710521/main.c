@@ -59,33 +59,33 @@ void printDoubleArray(double *dp, int len) {
 void swapIntegerValues(int *i1, int *i2) {
     printf("Q2: Integer Swap\n");
     printf("x = %d, y = %d\n", *i1, *i2);
-    int temp = *i1;
-    *i1 = *i2;
-    *i2 = temp;
+    int temp = *i1; // store the value of i1 in a temp variable
+    *i1 = *i2; // set the value of i1 to the value of i2
+    *i2 = temp; // set the value of i2 to the value of temp
     printf("x = %d, y = %d\n", *i1, *i2);
 }
 
 void squareIntArray(int *ip, int len) {
     printf("Q3: Square Array\n");
     for (int i = 0; i < len; i++) {
-        *(ip + i) = *(ip + i) * *(ip + i);
+        *(ip + i) = *(ip + i) * *(ip + i); // square the value at the address
     }
     for (int i = 0; i < len; i++) {
-        printf("%d ", *(ip + i));
+        printf("%d ", *(ip + i)); // print the value at the address
     }
 }
 
 void printIntegerArrayBackwards(int *ip, int len) {
     printf("Q4: Print Array Backwards\n");
-    for (int i = len - 1; i >= 0; i--) {
-        printf("%d ", *(ip + i));
+    for (int i = len - 1; i >= 0; i--) { // start at the end of the array and go backwards
+        printf("%d ", *(ip + i)); // print the value at the address
     }
 }
 
 void randomIntArray(int *ip, int len, int max) {
     printf("Q5: Random Integers\n");
     for (int i = 0; i < len; i++) {
-        *(ip + i) = rand() % max;
+        *(ip + i) = rand() % max; // random number between 0 and max
     }
     for (int i = 0; i < len; i++) {
         printf("%d ", *(ip + i));
