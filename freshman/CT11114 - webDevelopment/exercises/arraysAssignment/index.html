@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Random Number Stats</title>
+    <script>
+      // Function to generate a random integer between min and max (inclusive)
+      function getRandomInt(min, max) {
+        return Math.floor(Math.random() * (max - min + 1)) + min;
+      }
+
+      // Generate an array of 100 random integers between 1 and 999
+      var numbers = [];
+      for (var i = 0; i < 100; i++) {
+        numbers.push(getRandomInt(1, 999));
+      }
+
+      // Calculate sum, average, largest, and smallest values
+      var sum = numbers.reduce((acc, curr) => acc + curr, 0);
+      var average = sum / numbers.length;
+      var largest = Math.max(...numbers);
+      var smallest = Math.min(...numbers);
+    </script>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background-color: #f0f0f0;
+      }
+
+      h1 {
+        color: #333;
+        text-align: center;
+        padding: 20px 0;
+      }
+
+      p {
+        color: #666;
+        font-size: 1.2em;
+        margin: 10px;
+      }
+
+      #stats {
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body onload="">
+    <h1>Random Number Stats</h1>
+    <p id="stats"></p>
+    <p id="numbers"></p>
+
+    <script>
+      // Display the statistics
+      document.getElementById("stats").innerHTML = `
+            Sum: ${sum}<br>
+            Average: ${average.toFixed(2)}<br>
+            Largest: ${largest}<br>
+            Smallest: ${smallest}
+        `;
+
+      // Display the numbers themselves
+      document.getElementById("numbers").textContent = numbers.join(", ");
+    </script>
+  </body>
+</html>
