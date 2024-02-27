@@ -162,7 +162,6 @@ void startGame(char *word) {
             }
         }
 
-        status =
                 guessCount++; // Increment the guess count
     }
 

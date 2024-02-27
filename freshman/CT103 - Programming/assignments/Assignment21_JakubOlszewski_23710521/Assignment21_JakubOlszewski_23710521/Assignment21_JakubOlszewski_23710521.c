@@ -162,8 +162,7 @@ void startGame(char *word) {
             }
         }
 
-        status =
-                guessCount++; // Increment the guess count
+        guessCount++; // Increment the guess count
     }
 
     printf("Well done, that took you %d guesses to find %s\n", guessCount, word);
