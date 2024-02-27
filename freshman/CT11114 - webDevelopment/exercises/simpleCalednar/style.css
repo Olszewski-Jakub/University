@@ -3,10 +3,6 @@ body {
     text-align: center;
 }
 
-table {
-    border-collapse: collapse;
-    margin: 20px auto;
-}
 .input-container {
     width: fit-content;
     margin-left: auto;
@@ -24,7 +20,7 @@ table {
 }
 input[type="number"] {
     width: 100%;
-    max-width: 300px; /* Add this line */
+    max-width: 300px; 
     padding: 12px 20px;
     margin: 8px 0;
     box-sizing: border-box;
@@ -52,20 +48,31 @@ button {
 button:hover {
     background-color: #45a049;
 }
+
+table {
+    border-collapse: collapse;
+    margin: 20px auto;
+}
+
 th, td {
-    border: 1px solid #333; /* Use a softer color for the border */
+    border: 1px solid #333; 
     padding: 10px;
-    font-family: 'Roboto', sans-serif; /* Use a modern font */
-    text-align: center; /* Center the text */
+    font-family: 'Roboto', sans-serif; 
+    text-align: center;
 }
 
 th {
     background-color: #eee;
-    text-transform: uppercase; /* Make the header text uppercase */
-    letter-spacing: 1px; /* Increase the spacing between letters */
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
 }
 
 .current-day {
-    background-color: #ff4081; /* Use a more vibrant color */
-    color: white; /* Make the text color white to contrast with the background */
+    background-color: #ff4081; 
+    color: white; 
+}
+
+td.number {
+    background-color: #d3c8c8; 
+    color: black; 
 }

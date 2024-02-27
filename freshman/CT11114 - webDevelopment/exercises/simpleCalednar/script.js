@@ -1,6 +1,7 @@
 function generateCalendar() {
   const daysInMonth = parseInt(document.getElementById("days").value);
   const startDay = parseInt(document.getElementById("startDay").value);
+
   if (daysInMonth < 28 || daysInMonth > 31 || isNaN(daysInMonth)) {
     alert("Please enter a valid number of days in month");
   } else if (startDay < 0 || startDay > 6 || isNaN(startDay)) {
@@ -20,7 +21,7 @@ function generateCalendar() {
           if (currentDay === new Date().getDate()) {
             calendarHTML += `<td class="current-day">${currentDay}</td>`;
           } else {
-            calendarHTML += `<td>${currentDay}</td>`;
+            calendarHTML += `<td class="number">${currentDay}</td>`;
           }
           currentDay++;
         }
