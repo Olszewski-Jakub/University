@@ -7,23 +7,6 @@
 char alltext[200000];
 char oneline[1000];
 
-int countWords(char *text) {
-    int wordCount = 0;
-    int i = 0;
-    int inWord = 0;
-    while (text[i] != '\0') {
-        if (isalpha(text[i])) {
-            if (!inWord) {
-                inWord = 1;
-                wordCount++;
-            }
-        } else {
-            inWord = 0;
-        }
-        i++;
-    }
-    return wordCount;
-}
 
 int countSyllablesInAWord(char *word) {
     int syllableCount = 0;
