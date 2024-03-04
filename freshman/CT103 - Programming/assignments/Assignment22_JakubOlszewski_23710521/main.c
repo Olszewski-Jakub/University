@@ -61,6 +61,38 @@ int countSentences(char *text) {
     return sentenceCount;
 }
 
+double calculateIndex(char *text){
+
+    double index;
+    int syllableCount = 0;
+    int sentenceCount = countSentences(text);
+    int wordCount = 0;
+
+    char word[100]; // Temporary variable to store each word
+    int word_index = 0; // Index for the temporary word variable
+    while (*text != '\0') {
+        if (isspace(*text)) {
+            if (word_index > 0) {
+                word[word_index] = '\0'; // Null-terminate the word
+                wordCount++; // Increment the word count
+                syllableCount += countSyllablesInAWord(word); // Add the syllable count of the word to the total syllable count
+                word_index = 0; // Reset the index for the next word
+            }
+        } else if (isalnum(*text)) {
+            word[word_index++] = *text; // Add character to the word
+        }
+        text++;
+    }
+    if (word_index > 0) {
+        word[word_index] = '\0'; // Null-terminate the last word
+        printf("%s\n", word); // Print the last word
+        wordCount++; // Increment the word count
+        syllableCount += countSyllablesInAWord(word); // Add the syllable count of the word to the total syllable count
+    }
+    index =  206.835 -84.6*((double)syllableCount/(double)wordCount) - 1.015*((double)wordCount/(double)sentenceCount);
+    return index;
+}
+
 int main() {
     FILE *file_ptr;
     file_ptr = fopen(filePath, "r"); // open for reading
@@ -73,20 +105,10 @@ int main() {
             strcat(alltext, oneline);
         }
         printf("%s", alltext);
-        printf("\nThe number of words in the article is %d\n", countWords(alltext));
+        double index = calculateIndex(alltext);
+        printf("The index of the article is %.2f\n", index);
         fclose(file_ptr);
     }
 
-    //Add testcase for countSyllablesInAWord
-//    printf("The number of syllables in the word 'hello' is %d\n", countSyllablesInAWord("hello"));
-//    printf("The number of syllables in the word 'world' is %d\n", countSyllablesInAWord("world"));
-//    printf("The number of syllables in the word 'syllable' is %d\n", countSyllablesInAWord("syllable"));
-//    printf("The number of syllables in the word 'count' is %d\n", countSyllablesInAWord("count"));
-//    printf("The number of syllables in the word 'real' is %d\n", countSyllablesInAWord("real"));
-//    printf("The number of syllables in the word 'regal' is %d\n", countSyllablesInAWord("regal"));
-
-    //Add testcase for countSentences
-//    printf("The number of sentences in the article is %d\n", countSentences("The index is computed by the following formula:"));
-//    printf("The number of sentences in the article is %d\n", countSentences("Count all sentences. A sentence is ended by a full stop, colon, semicolon, question mark, or exclamation mark."));
-
+    return 0;
 }
