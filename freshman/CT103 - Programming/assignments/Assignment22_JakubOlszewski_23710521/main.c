@@ -8,6 +8,30 @@ char alltext[200000];
 char oneline[1000];
 
 
+int countSyllablesInAWord(char *word);
+int countSentences(char *text);
+double calculateIndex(char *text);
+
+
+int main() {
+    FILE *file_ptr;
+    file_ptr = fopen(filePath, "r"); // open for reading
+    if (file_ptr == NULL) {
+        printf("Could not open article\n");
+    } else {
+        alltext[0] = '\0'; // make sure this string is empty
+        while (fgets(oneline, 999, file_ptr) != NULL) {
+            // read the next line and append it (with \n intact)
+            strcat(alltext, oneline);
+        }
+        double index = calculateIndex(alltext);
+        printf("The index of the article is %.2f\n", index);
+        fclose(file_ptr);
+    }
+
+    return 0;
+}
+
 int countSyllablesInAWord(char *word) {
     int syllableCount = 0;
     int len = strlen(word);
@@ -68,30 +92,9 @@ double calculateIndex(char *text){
     }
     if (word_index > 0) {
         word[word_index] = '\0'; // Null-terminate the last word
-        printf("%s\n", word); // Print the last word
         wordCount++; // Increment the word count
         syllableCount += countSyllablesInAWord(word); // Add the syllable count of the word to the total syllable count
     }
     index =  206.835 -84.6*((double)syllableCount/(double)wordCount) - 1.015*((double)wordCount/(double)sentenceCount);
     return index;
-}
-
-int main() {
-    FILE *file_ptr;
-    file_ptr = fopen(filePath, "r"); // open for reading
-    if (file_ptr == NULL) {
-        printf("Could not open article\n");
-    } else {
-        alltext[0] = '\0'; // make sure this string is empty
-        while (fgets(oneline, 999, file_ptr) != NULL) {
-            // read the next line and append it (with \n intact)
-            strcat(alltext, oneline);
-        }
-        printf("%s", alltext);
-        double index = calculateIndex(alltext);
-        printf("The index of the article is %.2f\n", index);
-        fclose(file_ptr);
-    }
-
-    return 0;
 }
