@@ -26,6 +26,6 @@ int readNumbersFromFile(const char *filename, int size, int numbers[]);
  * @param size The number of elements in the sortingResults array.
  * @param filePath The path of the file where the results should be written.
  */
-void writeResultsToFile(SortingResult sortingResults[], int size, const char *filePath);
+int writeResultsToFile(SortingResult sortingResults[], int size, const char *filePath);
 
 #endif //QUESTION3_FILEOPERATIONS_H

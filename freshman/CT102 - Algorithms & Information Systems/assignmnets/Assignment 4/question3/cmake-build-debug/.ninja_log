@@ -70,3 +70,15 @@
 26	274	7319736343801648	CMakeFiles/question3.dir/src/ResultManagement.c.obj	e2d51ceeeed6d1a3
 14	276	7319736343902472	CMakeFiles/question3.dir/src/SortingAlgorithms.c.obj	81d2ae4c8d6cfdde
 277	678	7319736348107609	question3.exe	a59a6f9f5e5c54db
+27	247	7319739400561092	CMakeFiles/question3.dir/src/ResultManagement.c.obj	e2d51ceeeed6d1a3
+8	261	7319739400480158	CMakeFiles/question3.dir/src/FileOperations.c.obj	48206f3c796e3858
+3	286	7319739400561092	CMakeFiles/question3.dir/main.c.obj	e6b70a7ac204cd90
+14	299	7319739400678008	CMakeFiles/question3.dir/src/SortingAlgorithms.c.obj	81d2ae4c8d6cfdde
+20	305	7319739401191384	CMakeFiles/question3.dir/src/SortingOperations.c.obj	436e9505706e226c
+305	696	7319739405064503	question3.exe	a59a6f9f5e5c54db
+9	245	7319739737149378	CMakeFiles/question3.dir/src/FileOperations.c.obj	48206f3c796e3858
+13	297	7319739737494612	CMakeFiles/question3.dir/src/SortingAlgorithms.c.obj	81d2ae4c8d6cfdde
+4	302	7319739737584605	CMakeFiles/question3.dir/main.c.obj	e6b70a7ac204cd90
+26	306	7319739737614606	CMakeFiles/question3.dir/src/ResultManagement.c.obj	e2d51ceeeed6d1a3
+20	318	7319739737994623	CMakeFiles/question3.dir/src/SortingOperations.c.obj	436e9505706e226c
+319	873	7319739743450374	question3.exe	a59a6f9f5e5c54db

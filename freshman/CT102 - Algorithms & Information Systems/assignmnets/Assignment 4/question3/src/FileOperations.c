@@ -1,12 +1,12 @@
 #include "../include/FileOperations.h"
 
 
-void writeResultsToFile(SortingResult sortingResults[], int size, const char *filePath) {
+int writeResultsToFile(SortingResult sortingResults[], int size, const char *filePath) {
     FILE *file;
     file = fopen(filePath, "w");
     if (file == NULL) {
         printf("Error opening file\n");
-        exit(1);
+        return 0;
     } else {
         fprintf(file, "Sorting Algorithm, Size, Swaps, Comparisons, Function Calls, Time Taken\n");
         for (int i = 0; i < size; i++) {
@@ -15,6 +15,7 @@ void writeResultsToFile(SortingResult sortingResults[], int size, const char *fi
         }
         fclose(file);
     }
+    return 1;
 }
 
 int readNumbersFromFile(const char *filename, int size, int numbers[]) {
