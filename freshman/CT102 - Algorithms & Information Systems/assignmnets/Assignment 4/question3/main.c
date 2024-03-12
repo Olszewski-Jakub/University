@@ -3,13 +3,13 @@
 #include "include/SortingOperations.h"
 #include "include/SortingAlgorithms.h"
 
-#define file1 "C:\\Users\\jolsz\\uni\\freshman\\CT102 - Algorithms & Information Systems\\assignmnets\\Assignment 4\\question3\\files\\file1.txt"
-#define file2 "C:\\Users\\jolsz\\uni\\freshman\\CT102 - Algorithms & Information Systems\\assignmnets\\Assignment 4\\question3\\files\\file2.txt"
+#define file1 "..\\files\\file1.txt"
+#define file2 "..\\files\\file2.txt"
 
-#define result_file_1 "C:\\Users\\jolsz\\uni\\freshman\\CT102 - Algorithms & Information Systems\\assignmnets\\Assignment 4\\question3\\files\\result_file1.csv"
-#define result_file_2 "C:\\Users\\jolsz\\uni\\freshman\\CT102 - Algorithms & Information Systems\\assignmnets\\Assignment 4\\question3\\files\\result_file2.csv"
+#define result_file_1 "..\\files\\result_file1.csv"
+#define result_file_2 "..\\files\\result_file2.csv"
 
-
+#define NUM_SORTING_ALGORITHMS 4
 
 int numbers[10000];
 
@@ -31,7 +31,7 @@ int main() {
 
 void processFile(const char *filePath, const char *resultFilePath) {
     int arrIndex = 0;
-    SortingResult sortingResultsFile[40];
+    SortingResult sortingResultsFile[NUM_SORTING_ALGORITHMS * 10];
 
     // Pass the address of arrIndex and sortingResultsFile to the function
     executeSort(numbers, bubbleSort, "Bubble Sort", &arrIndex, sortingResultsFile, filePath);
@@ -41,7 +41,7 @@ void processFile(const char *filePath, const char *resultFilePath) {
 
 
     printResults(&arrIndex, sortingResultsFile);
-    writeResultsToFile(sortingResultsFile, 40, resultFilePath);
+    writeResultsToFile(sortingResultsFile, NUM_SORTING_ALGORITHMS * 10, resultFilePath);
 }
 
 
