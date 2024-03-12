@@ -13,3 +13,10 @@
 2	340	7319752832729296	build.ninja	af73892676a605f1
 26	304	7319744775876198	CMakeFiles/question3.dir/src/ResultManagement.c.obj	e2d51ceeeed6d1a3
 20	355	7319744776462921	CMakeFiles/question3.dir/src/SortingOperations.c.obj	436e9505706e226c
+17	343	7319758159867390	CMakeFiles/question3.dir/src/SortingAlgorithms.c.obj	81d2ae4c8d6cfdde
+39	350	7319758159746337	CMakeFiles/question3.dir/src/Swap.c.obj	d407a3ff1af2538d
+5	353	7319758159857387	CMakeFiles/question3.dir/main.c.obj	e6b70a7ac204cd90
+11	368	7319758159933935	CMakeFiles/question3.dir/src/FileOperations.c.obj	48206f3c796e3858
+24	372	7319758159867390	CMakeFiles/question3.dir/src/ResultManagement.c.obj	e2d51ceeeed6d1a3
+33	419	7319758160808793	CMakeFiles/question3.dir/src/SortingOperations.c.obj	436e9505706e226c
+420	925	7319758165810834	question3.exe	f0f8db1a9a541e5c

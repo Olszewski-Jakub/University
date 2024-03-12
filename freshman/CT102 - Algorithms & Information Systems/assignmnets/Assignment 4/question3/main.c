@@ -5,9 +5,11 @@
 
 #define file1 "..\\files\\file1.txt"
 #define file2 "..\\files\\file2.txt"
+#define file_a4 "..\\files\\file_a4.txt"
 
 #define result_file_1 "..\\files\\result_file1.csv"
 #define result_file_2 "..\\files\\result_file2.csv"
+#define result_file_a4 "..\\files\\result_file_a4.csv"
 
 #define NUM_SORTING_ALGORITHMS 4
 #define NUM_RESULTS_PER_ALGORITHM 10
@@ -26,7 +28,7 @@ int main() {
 
     processFile(file1, result_file_1);
     processFile(file2, result_file_2);
-
+    processFile(file_a4, result_file_a4);
     return 0;
 }
 
