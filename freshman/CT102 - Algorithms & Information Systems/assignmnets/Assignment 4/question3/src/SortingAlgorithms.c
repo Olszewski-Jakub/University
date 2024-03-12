@@ -1,10 +1,6 @@
 #include "../include/SortingAlgorithms.h"
 
-void swap(int *a, int *b) {
-    int temp = *a;
-    *a = *b;
-    *b = temp;
-}
+
 
 // Bubble Sort function
 void bubbleSort(int nums[], int size, int *swaps, int *comparisons, int *functionCalls) {

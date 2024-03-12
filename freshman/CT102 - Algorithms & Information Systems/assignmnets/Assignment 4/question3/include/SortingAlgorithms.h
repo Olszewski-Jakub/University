@@ -3,15 +3,9 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include "Swap.h"
 
 
-/**
- * Swaps the values of two integers.
- *
- * @param a A pointer to the first integer.
- * @param b A pointer to the second integer.
- */
-void swap(int *a, int *b);
 
 /**
  * Sorts an array of integers using the bubble sort algorithm.

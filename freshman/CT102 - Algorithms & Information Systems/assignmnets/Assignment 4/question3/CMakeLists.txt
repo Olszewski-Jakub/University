@@ -7,4 +7,6 @@ add_executable(question3 main.c
         src/SortingAlgorithms.c
         src/FileOperations.c
         src/SortingOperations.c
-        src/ResultManagement.c)
+        src/ResultManagement.c
+        src/Swap.c
+        include/Swap.h)

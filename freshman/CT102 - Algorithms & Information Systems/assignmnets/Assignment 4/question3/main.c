@@ -4,7 +4,7 @@
 #include "include/SortingAlgorithms.h"
 
 #define file1 "..\\files\\file1.txt"
-#define file2 "files\\file2.txt"
+#define file2 "..\\files\\file2.txt"
 
 #define result_file_1 "..\\files\\result_file1.csv"
 #define result_file_2 "..\\files\\result_file2.csv"

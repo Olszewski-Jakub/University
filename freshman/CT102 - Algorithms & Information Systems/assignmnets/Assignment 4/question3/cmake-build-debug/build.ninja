@@ -79,6 +79,12 @@ build CMakeFiles/question3.dir/src/ResultManagement.c.obj: C_COMPILER__question3
   OBJECT_DIR = CMakeFiles\question3.dir
   OBJECT_FILE_DIR = CMakeFiles\question3.dir\src
 
+build CMakeFiles/question3.dir/src/Swap.c.obj: C_COMPILER__question3_unscanned_Debug C$:/Users/jolsz/uni/freshman/CT102$ -$ Algorithms$ &$ Information$ Systems/assignmnets/Assignment$ 4/question3/src/Swap.c || cmake_object_order_depends_target_question3
+  DEP_FILE = CMakeFiles\question3.dir\src\Swap.c.obj.d
+  FLAGS = -g -std=gnu11 -fdiagnostics-color=always
+  OBJECT_DIR = CMakeFiles\question3.dir
+  OBJECT_FILE_DIR = CMakeFiles\question3.dir\src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target question3
@@ -87,7 +93,7 @@ build CMakeFiles/question3.dir/src/ResultManagement.c.obj: C_COMPILER__question3
 #############################################
 # Link the executable question3.exe
 
-build question3.exe: C_EXECUTABLE_LINKER__question3_Debug CMakeFiles/question3.dir/main.c.obj CMakeFiles/question3.dir/src/SortingAlgorithms.c.obj CMakeFiles/question3.dir/src/FileOperations.c.obj CMakeFiles/question3.dir/src/SortingOperations.c.obj CMakeFiles/question3.dir/src/ResultManagement.c.obj
+build question3.exe: C_EXECUTABLE_LINKER__question3_Debug CMakeFiles/question3.dir/main.c.obj CMakeFiles/question3.dir/src/SortingAlgorithms.c.obj CMakeFiles/question3.dir/src/FileOperations.c.obj CMakeFiles/question3.dir/src/SortingOperations.c.obj CMakeFiles/question3.dir/src/ResultManagement.c.obj CMakeFiles/question3.dir/src/Swap.c.obj
   FLAGS = -g
   LINK_LIBRARIES = -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32
   OBJECT_DIR = CMakeFiles\question3.dir
