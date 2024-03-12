@@ -7,9 +7,10 @@
 #include <stdlib.h>
 
 // Bubble Sort function
-void bubbleSort(int nums[], int size, int *swaps, int *comparisons) {
+void bubbleSort(int nums[], int size, int *swaps, int *comparisons, int *functionCalls) {
     *swaps = 0;
     *comparisons = 0;
+    *functionCalls = 1;
 
     for (int i = 0; i < size - 1; i++) { // Iterate over each element in the array
         for (int j = 0;
@@ -23,10 +24,10 @@ void bubbleSort(int nums[], int size, int *swaps, int *comparisons) {
     }
 }
 
-void selectionSort(int nums[], int size, int *swaps, int *comparisons) {
+void selectionSort(int nums[], int size, int *swaps, int *comparisons, int *functionCalls) {
     *swaps = 0;
     *comparisons = 0;
-
+    *functionCalls = 1;
     for (int step = 0; step < size - 1; step++) { // Iterate over each element in the array
         int min_idx = step; // Assume the current element is the smallest
         for (int i = step + 1; i < size; i++) { // For each element, iterate over the rest of the array
@@ -42,10 +43,11 @@ void selectionSort(int nums[], int size, int *swaps, int *comparisons) {
     }
 }
 
-void insertionSort(int nums[], int size, int *swaps, int *comparisons) {
+void insertionSort(int nums[], int size, int *swaps, int *comparisons, int *functionCalls) {
 
     *swaps = 0;
     *comparisons = 0;
+    *functionCalls = 1;
 
     int i, j, current;
     for (i = 0; i < size; i++) { // Iterate over each element in the array
@@ -62,9 +64,10 @@ void insertionSort(int nums[], int size, int *swaps, int *comparisons) {
     }
 }
 
-void countingSort(int nums[], int size, int *swaps, int *comparisons) {
+void countingSort(int nums[], int size, int *swaps, int *comparisons, int *functionCalls) {
     *swaps = 0;
     *comparisons = 0; // Counting Sort doesn't involve comparisons
+    *functionCalls = 1;
 
     int max = nums[0]; // Initialize max with the first element of the array
     int min = nums[0]; // Initialize min with the first element of the array

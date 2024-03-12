@@ -3,6 +3,7 @@
 #include <time.h>
 #include <string.h>
 #include "sortingAlgorithms.h"
+
 #define file1 "C:\\Users\\jolsz\\uni\\freshman\\CT102 - Algorithms & Information Systems\\assignmnets\\Assignment 4\\question3\\files\\file1.txt"
 #define file2 "C:\\Users\\jolsz\\uni\\freshman\\CT102 - Algorithms & Information Systems\\assignmnets\\Assignment 4\\question3\\files\\file2.txt"
 
@@ -14,6 +15,7 @@ typedef struct {
     int size;
     int swaps;
     int comparisons;
+    int functionCalls;
     double timeTaken;
 } SortingResult;
 
@@ -50,7 +52,7 @@ int readNumbersFromFile(const char *filename, int size, int numbers[]);
  * @param arrIndex A pointer to the index of the array where the result struct should be stored.
  * @param sortingResultsFile The array of SortingResult structs where the result should be stored.
  */
-void saveResultInStruct(int size, int swaps, int comparisons, double timeTaken, char sortingAlgorithm[], int *arrIndex,
+void saveResultInStruct(int size, int swaps, int comparisons,int functionCalls, double timeTaken, char sortingAlgorithm[], int *arrIndex,
                         SortingResult sortingResultsFile[]);
 
 
@@ -78,7 +80,7 @@ int isSorted(int arr[], int n);
  * @param sortingResultsFile The array of SortingResult structs where the result should be stored.
  * @param filePath The path of the file containing the numbers to be sorted.
  */
-void executeSort(void (*sort)(int[], int, int *, int *), char *algorithmName, int *arrIndex,
+void executeSort(void (*sort)(int[], int, int *, int *, int *), char *algorithmName, int *arrIndex,
                  SortingResult sortingResultsFile[], const char *filePath);
 
 /**
@@ -145,20 +147,19 @@ void swap(int *a, int *b) {
     *b = temp;
 }
 
-void saveResultInStruct(int size, int swaps, int comparisons, double timeTaken, char sortingAlgorithm[], int *arrIndex,
+void saveResultInStruct(int size, int swaps, int comparisons,int functionCalls, double timeTaken, char sortingAlgorithm[], int *arrIndex,
                         SortingResult sortingResultsFile[]) {
     SortingResult result;
     result.size = size;
     result.swaps = swaps;
     result.comparisons = comparisons;
+    result.functionCalls = functionCalls;
     result.timeTaken = timeTaken;
     strcpy(result.sortingAlgorithm, sortingAlgorithm);
 
     sortingResultsFile[*arrIndex] = result;
     (*arrIndex)++;
 }
-
-
 
 
 void printResults(int *arrIndex, SortingResult sortingResultsFile[]) {
@@ -180,7 +181,7 @@ int isSorted(int arr[], int n) {
     return 1;
 }
 
-void executeSort(void (*sort)(int[], int, int *, int *), char *algorithmName, int *arrIndex,
+void executeSort(void (*sort)(int[], int, int *, int *, int *), char *algorithmName, int *arrIndex,
                  SortingResult sortingResultsFile[], const char *filePath) {
     for (int i = 0; i < 10; i++) { // Loop over the array 10 times
         int size = (i + 1) * 1000; // Calculate the size of the array for each iteration
@@ -196,11 +197,16 @@ void executeSort(void (*sort)(int[], int, int *, int *), char *algorithmName, in
 
         int swaps = 0;
         int comparisons = 0;
+        int functionCalls = 0;
+
         clock_t start_time = clock();
-        sort(numbers, size, &swaps, &comparisons); // Sort the numbers
+
+        sort(numbers, size, &swaps, &comparisons,&functionCalls); // Sort the numbers
+
         clock_t end_time = clock(); // End time
         double time_taken = ((double) (end_time - start_time)) / CLOCKS_PER_SEC; // Time taken in seconds
-        saveResultInStruct(size, swaps, comparisons, time_taken, algorithmName, arrIndex, sortingResultsFile);
+
+        saveResultInStruct(size, swaps, comparisons,functionCalls, time_taken, algorithmName, arrIndex, sortingResultsFile);
 
         if (!isSorted(numbers, size)) { // If the numbers are not sorted
             printf("Array not sorted\n"); // Print a message indicating that the array is not sorted
@@ -216,10 +222,10 @@ void writeResultsToFile(SortingResult sortingResults[], int size, const char *fi
         printf("Error opening file\n");
         exit(1);
     } else {
-        fprintf(file, "Sorting Algorithm, Size, Swaps, Comparisons, Time Taken\n");
+        fprintf(file, "Sorting Algorithm, Size, Swaps, Comparisons, Function Calls, Time Taken\n");
         for (int i = 0; i < size; i++) {
-            fprintf(file, "%s, %d, %d, %d, %f\n", sortingResults[i].sortingAlgorithm, sortingResults[i].size,
-                    sortingResults[i].swaps, sortingResults[i].comparisons, sortingResults[i].timeTaken);
+            fprintf(file, "%s, %d, %d, %d, %d, %f\n", sortingResults[i].sortingAlgorithm, sortingResults[i].size,
+                    sortingResults[i].swaps, sortingResults[i].comparisons,sortingResults[i].functionCalls, sortingResults[i].timeTaken);
         }
         fclose(file);
     }
