@@ -5,7 +5,9 @@
 #ifndef QUESTION3_SORTINGALGORITHMS_H
 #define QUESTION3_SORTINGALGORITHMS_H
 
-#endif //QUESTION3_SORTINGALGORITHMS_H
+#include <stdio.h>
+#include <stdlib.h>
+
 
 /**
  * Swaps the values of two integers.
@@ -58,3 +60,5 @@ void insertionSort(int nums[], int size, int *swaps, int *comparisons, int *func
  * @param functionCalls A pointer to an integer where the number of function calls will be stored.
  */
 void countingSort(int nums[], int size, int *swaps, int *comparisons, int *functionCalls);
+
+#endif //QUESTION3_SORTINGALGORITHMS_H
