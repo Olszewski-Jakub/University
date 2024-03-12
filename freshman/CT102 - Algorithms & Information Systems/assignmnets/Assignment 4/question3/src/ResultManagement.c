@@ -1,7 +1,3 @@
-//
-// Created by jolsz on 12.03.2024.
-//
-
 #include "../include/ResultManagement.h"
 
 void saveResultInStruct(int size, int swaps, int comparisons,int functionCalls, double timeTaken, char sortingAlgorithm[], int *arrIndex,

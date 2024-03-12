@@ -1,7 +1,3 @@
-//
-// Created by jolsz on 12.03.2024.
-//
-
 #include <time.h>
 #include "../include/SortingOperations.h"
 

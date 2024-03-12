@@ -1,7 +1,3 @@
-//
-// Created by jolsz on 12.03.2024.
-//
-
 #ifndef QUESTION3_SORTINGOPERATIONS_H
 #define QUESTION3_SORTINGOPERATIONS_H
 
