@@ -68,7 +68,7 @@ void saveResultInStruct(int size, int swaps, int comparisons, double timeTaken, 
  * @param arrIndex A pointer to the index of the array where the result struct should be stored.
  * @param sortingResultsFile The array of SortingResult structs where the result should be stored.
  */
-void bubbleSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]);
+void bubbleSort(int nums[], int size, int *swaps, int *comparisons);
 
 /**
  * Executes the selection sort algorithm on an array of integers.
@@ -78,7 +78,7 @@ void bubbleSort(int nums[], int size, int *arrIndex, SortingResult sortingResult
  * @param arrIndex A pointer to the index of the array where the result struct should be stored.
  * @param sortingResultsFile The array of SortingResult structs where the result should be stored.
  */
-void selectionSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]);
+void selectionSort(int nums[], int size, int *swaps, int *comparisons);
 
 /**
  * Executes the insertion sort algorithm on an array of integers.
@@ -88,7 +88,7 @@ void selectionSort(int nums[], int size, int *arrIndex, SortingResult sortingRes
  * @param arrIndex A pointer to the index of the array where the result struct should be stored.
  * @param sortingResultsFile The array of SortingResult structs where the result should be stored.
  */
-void insertionSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]);
+void insertionSort(int nums[], int size, int *swaps, int *comparisons);
 
 /**
  * Executes the counting sort algorithm on an array of integers.
@@ -98,7 +98,7 @@ void insertionSort(int nums[], int size, int *arrIndex, SortingResult sortingRes
  * @param arrIndex A pointer to the index of the array where the result struct should be stored.
  * @param sortingResultsFile The array of SortingResult structs where the result should be stored.
  */
-void countingSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]);
+void countingSort(int nums[], int size, int *swaps, int *comparisons);
 
 /**
  * Print the results
@@ -124,8 +124,8 @@ int isSorted(int arr[], int n);
  * @param sortingResultsFile The array of SortingResult structs where the result should be stored.
  * @param filePath The path of the file containing the numbers to be sorted.
  */
-void executeSort(void (*sort)(int[], int, int *, SortingResult[]), int *arrIndex, SortingResult sortingResultsFile[],
-                 const char *filePath);
+void executeSort(void (*sort)(int[], int, int *, int *), char *algorithmName, int *arrIndex,
+                 SortingResult sortingResultsFile[], const char *filePath);
 
 /**
  * Writes the results of the sorting algorithms to a file.
@@ -150,10 +150,11 @@ void processFile(const char *filePath, const char *resultFilePath) {
     SortingResult sortingResultsFile[40];
 
     // Pass the address of arrIndex and sortingResultsFile to the function
-    executeSort(bubbleSort, &arrIndex, sortingResultsFile, filePath);
-    executeSort(selectionSort, &arrIndex, sortingResultsFile, filePath);
-    executeSort(insertionSort, &arrIndex, sortingResultsFile, filePath);
-    executeSort(countingSort, &arrIndex, sortingResultsFile, filePath);
+    executeSort(bubbleSort, "Bubble Sort", &arrIndex, sortingResultsFile, filePath);
+    executeSort(selectionSort, "Selection Sort", &arrIndex, sortingResultsFile, filePath);
+    executeSort(insertionSort, "Insertion Sort", &arrIndex, sortingResultsFile, filePath);
+    executeSort(countingSort, "Count Sort", &arrIndex, sortingResultsFile, filePath);
+
 
     printResults(&arrIndex, sortingResultsFile);
     writeResultsToFile(sortingResultsFile, 40, resultFilePath);
@@ -204,92 +205,78 @@ void saveResultInStruct(int size, int swaps, int comparisons, double timeTaken, 
 }
 
 // Bubble Sort function
-void bubbleSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]) {
-    int swaps = 0;
-    int comparisons = 0;
-
-    clock_t start_time = clock(); // Start time
+void bubbleSort(int nums[], int size, int *swaps, int *comparisons) {
+    *swaps = 0;
+    *comparisons = 0;
 
     for (int i = 0; i < size - 1; i++) { // Iterate over each element in the array
         for (int j = 0;
              j < size - i - 1; j++) { // For each element, iterate over the array again, excluding the last i elements
-            (comparisons)++; // Increment the comparison count
+            (*comparisons)++; // Increment the comparison count
             if (nums[j] > nums[j + 1]) { // If the current element is greater than the next one
                 swap(&nums[j], &nums[j + 1]); // Swap the current element with the next one
-                (swaps)++; // Increment the swap count
+                (*swaps)++; // Increment the swap count
             }
         }
     }
-
-    clock_t end_time = clock(); // End time
-    double time_taken = ((double) (end_time - start_time)) / CLOCKS_PER_SEC; // Time taken in seconds
-
-    saveResultInStruct(size, swaps, comparisons, time_taken, "Bubble Sort", arrIndex, sortingResultsFile);
 }
 
-void selectionSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]) {
-    clock_t start_time = clock(); // Start time
-    int swaps = 0;
-    int comparisons = 0;
+void selectionSort(int nums[], int size, int *swaps, int *comparisons) {
+    *swaps = 0;
+    *comparisons = 0;
 
     for (int step = 0; step < size - 1; step++) { // Iterate over each element in the array
         int min_idx = step; // Assume the current element is the smallest
         for (int i = step + 1; i < size; i++) { // For each element, iterate over the rest of the array
-            comparisons++; // Increment the comparison count
+            (*comparisons)++; // Increment the comparison count
             if (nums[i] < nums[min_idx]) { // If a smaller element is found
                 min_idx = i; // Update the index of the smallest element
             }
         }
 
         // After finding the smallest element in the unsorted part of the array
-        swaps++; // Increment the swap count
+        (*swaps)++; // Increment the swap count
         swap(&nums[min_idx], &nums[step]); // Swap the smallest element with the first element of the unsorted part
     }
-    clock_t end_time = clock(); // End time
-    double time_taken = ((double) (end_time - start_time)) / CLOCKS_PER_SEC; // Time taken in seconds
-
-    saveResultInStruct(size, swaps, comparisons, time_taken, "Selection Sort", arrIndex, sortingResultsFile);
 }
 
-void insertionSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]) {
+void insertionSort(int nums[], int size, int *swaps, int *comparisons) {
 
-    clock_t start_time = clock(); // Start time
-    int swaps = 0;
-    int comparisons = 0;
+    *swaps = 0;
+    *comparisons = 0;
 
     int i, j, current;
     for (i = 0; i < size; i++) { // Iterate over each element in the array
         current = nums[i]; // Store the current element
         for (j = i - 1; j >= 0 && current < nums[j]; j--) { // Iterate backwards from the current element
             nums[j + 1] = nums[j]; // Shift the elements to the right
-            swaps++; // Increment the swap count
-            comparisons++; // Increment the comparison count
+            (*swaps)++; // Increment the swap count
+            (*comparisons)++; // Increment the comparison count
         }
         if (i != j + 1) { // If the current element has been moved
             nums[j + 1] = current; // Insert the current element in its correct position
-            swaps++; // Increment the swap count
+            (*swaps)++; // Increment the swap count
         }
     }
-
-    clock_t end_time = clock(); // End time
-    double time_taken = ((double) (end_time - start_time)) / CLOCKS_PER_SEC; // Time taken in seconds
-
-    saveResultInStruct(size, swaps, comparisons, time_taken, "Insertion Sort", arrIndex, sortingResultsFile);
 }
 
-void countingSort(int nums[], int size, int *arrIndex, SortingResult sortingResultsFile[]) {
-    clock_t start_time = clock(); // Start time
-    int swaps = 0;
-    int comparisons = 0; // Counting Sort doesn't involve comparisons
+void countingSort(int nums[], int size, int *swaps, int *comparisons) {
+    *swaps = 0;
+    *comparisons = 0; // Counting Sort doesn't involve comparisons
 
     int max = nums[0]; // Initialize max with the first element of the array
     int min = nums[0]; // Initialize min with the first element of the array
     for (int i = 1; i < size; ++i) { // Iterate over the array starting from the second element
+        (*comparisons)++; // Increment the comparison count
         if (nums[i] > max) { // If the current element is greater than max
             max = nums[i]; // Update max
+            (*swaps)++; // Increment the swap count
         }
+        (*comparisons)++; // Increment the comparison count
+
         if (nums[i] < min) { // If the current element is less than min
             min = nums[i]; // Update min
+            (*swaps)++; // Increment the swap count
         }
     }
 
@@ -333,12 +320,6 @@ void countingSort(int nums[], int size, int *arrIndex, SortingResult sortingResu
     // Free dynamically allocated memory
     free(count); // Free the memory allocated for the count array
     free(output); // Free the memory allocated for the output array
-
-    clock_t end_time = clock(); // End time
-    double time_taken = ((double) (end_time - start_time)) / CLOCKS_PER_SEC; // Time taken in seconds
-
-    saveResultInStruct(size, swaps, comparisons, time_taken, "Count Sort", arrIndex, sortingResultsFile);
-
 }
 
 
@@ -361,8 +342,8 @@ int isSorted(int arr[], int n) {
     return 1;
 }
 
-void executeSort(void (*sort)(int[], int, int *, SortingResult[]), int *arrIndex, SortingResult sortingResultsFile[],
-                 const char *filePath) {
+void executeSort(void (*sort)(int[], int, int *, int *), char *algorithmName, int *arrIndex,
+                 SortingResult sortingResultsFile[], const char *filePath) {
     for (int i = 0; i < 10; i++) { // Loop over the array 10 times
         int size = (i + 1) * 1000; // Calculate the size of the array for each iteration
         int num_read = readNumbersFromFile(filePath, size, numbers); // Read numbers from the file
@@ -371,12 +352,17 @@ void executeSort(void (*sort)(int[], int, int *, SortingResult[]), int *arrIndex
             printf("Error reading file\n"); // Print an error message
             return; // Exit the function
         } else if (num_read < size) { // If the number of numbers read is less than the size
-            printf("Only %d numbers read from file.\n", num_read); // Print a message indicating the number of numbers read
+            printf("Only %d numbers read from file.\n",
+                   num_read); // Print a message indicating the number of numbers read
         }
 
-
-        sort(numbers, size, arrIndex, sortingResultsFile); // Sort the numbers
-
+        int swaps = 0;
+        int comparisons = 0;
+        clock_t start_time = clock();
+        sort(numbers, size, &swaps, &comparisons); // Sort the numbers
+        clock_t end_time = clock(); // End time
+        double time_taken = ((double) (end_time - start_time)) / CLOCKS_PER_SEC; // Time taken in seconds
+        saveResultInStruct(size, swaps, comparisons, time_taken, algorithmName, arrIndex, sortingResultsFile);
 
         if (!isSorted(numbers, size)) { // If the numbers are not sorted
             printf("Array not sorted\n"); // Print a message indicating that the array is not sorted
