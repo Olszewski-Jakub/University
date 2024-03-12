@@ -35,9 +35,6 @@ function firstDayOfMonth(year, month) {
 
   // Convert the result to match the desired day of the week numbering
   let dayOfWeek = (h + 6) % 7; // Convert to Sunday as 0, Saturday as 6
-  if (dayOfWeek === 0) {
-    dayOfWeek = 7; // Convert Sunday to 7
-  }
 
   return dayOfWeek;
 }
