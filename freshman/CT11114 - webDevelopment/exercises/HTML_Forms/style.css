@@ -2,7 +2,7 @@ body {
   font-family: Arial, sans-serif;
   background-color: #f4f4f4;
   padding: 50px;
-  color: #333; /* Dark grey color for better readability */
+  color: #333; 
 }
 
 form {
@@ -21,7 +21,7 @@ td {
   border-bottom: 1px solid #ddd;
 }
 .form-field {
-  width: 100%; /* adjust as needed */
+  width: 100%; 
 }
 input {
   width: 99%;
@@ -29,8 +29,8 @@ input {
   border-radius: 4px;
   border: 2px solid #ddd;
   font-size: 1.2em;
-  color: #333; /* Dark grey color for better readability */
-  background-color: #f9f9f9; /* Light grey background for better contrast */
+  color: #333; 
+  background-color: #f9f9f9; 
 }
 
 select,
@@ -39,8 +39,8 @@ textarea {
   padding: 15px;
   border-radius: 4px;
   border: 1px solid #ddd;
-  color: #333; /* Dark grey color for better readability */
-  background-color: #f9f9f9; /* Light grey background for better contrast */
+  color: #333; 
+  background-color: #f9f9f9; 
 }
 
 textarea {
@@ -54,20 +54,20 @@ button {
   border-radius: 4px;
   border: 2px solid #ddd;
   font-size: 1.2em;
-  color: #333; /* Dark grey color for better readability */
-  background-color: #f9f9f9; /* Light grey background for better contrast */
-  cursor: pointer; /* Changes the cursor to a hand when hovering over the button */
+  color: #333;
+  background-color: #f9f9f9; 
+  cursor: pointer;
 }
 
 button:hover {
-  background-color: #ddd; /* Changes the background color when hovering over the button */
+  background-color: #ddd;
 }
 span {
   color: red;
   font-size: 12px;
   display: flex;
   align-items: center;
-  margin-top: 10px; /* adjust as needed */
+  margin-top: 10px;
 
 }
 
