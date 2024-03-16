@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>HTML Forms</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="scripts.js"></script>
+  </head>
+  <body>
+    <form id="myForm">
+      <table>
+        <!-- Question Category - Dropdown-->
+        <tr>
+          <td>Question Category</td>
+          <td>
+            <select name="question_category">
+              <option value="0">Select</option>
+              <option value="1">General</option>
+              <option value="2">Technical</option>
+              <option value="3">HR</option>
+            </select>
+            <span id="categoryError"></span>
+          </td>
+          <!-- Querstion - Text Erea -->
+        </tr>
+        <tr>
+          <td>Question</td>
+          <td>
+            <textarea name="question" id="" cols="30" rows="10"></textarea>
+            <span id="questionError"></span>
+          </td>
+        </tr>
+        <!-- Name - Input -->
+        <tr>
+          <td>Name</td>
+          <td>
+            <input type="text" name="name" />
+            <span id="nameError"></span>
+          </td>
+        </tr>
+        <!-- Email - Input -->
+        <tr>
+          <td>Email</td>
+          <td>
+            <input type="email" name="email" />
+            <span id="emailError"></span>
+          </td>
+        </tr>
+        <!-- Button - Submit -->
+        <tr>
+          <td></td>
+          <td><button onclick="submitForm()">Submit</button></td>
+        </tr>
+      </table>
+    </form>
+  </body>
+</html>
