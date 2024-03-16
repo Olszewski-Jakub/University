@@ -17,7 +17,6 @@ function validateForm(object) {
   var questionError = document.getElementById("questionError");
   var nameError = document.getElementById("nameError");
 
-  // question_category != 0
   if (object.question_category == 0) {
     displayError(categoryError, "Please select a category");
 
@@ -26,7 +25,6 @@ function validateForm(object) {
     displayError(categoryError, "");
   }
 
-  // question_text != ""
   if (removeInvisibleChars(object.question).length < 2) {
     displayError(questionError, "Please enter a question");
 
@@ -35,7 +33,6 @@ function validateForm(object) {
     displayError(questionError, "");
   }
 
-  // name
   if (removeInvisibleChars(object.name) == "") {
     displayError(nameError, "Please enter your name");
 
@@ -66,13 +63,8 @@ function submitForm() {
   formData.forEach(function (value, key) {
     object[key] = value;
   });
-  console.log(object); // This will log the object to the console
-  // validate
-  validateForm(object);
-
   if (validateForm(object)) {
     alert("Form submitted successfully!");
     form.reset();
-
   }
 }
