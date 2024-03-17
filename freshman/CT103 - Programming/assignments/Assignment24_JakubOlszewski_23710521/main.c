@@ -31,6 +31,18 @@ FILE *openFileForReading(char *filename);
 int readLocations();
 
 /**
+ * @brief Moves the player in a given direction.
+ *
+ * This function attempts to move the player in the given direction. If the move is valid (i.e., there is a location in that direction), it updates the current location ID and calls the look function to describe the new location. If the move is not valid, it prints a message saying "You can't go that way".
+ *
+ * @param direction The direction to move in. This should be one of the direction fields (n, s, e, w, in, out) of the current location.
+ * @param currentLocationId A pointer to the current location ID. This will be updated if the move is valid.
+ */
+void move(int direction, int *currentLocationId);
+
+void move(int direction, int *currentLocationId);
+
+/**
  * @brief Processes a command entered by the user.
  *
  * This function processes a command entered by the user. The command can be a direction (n, s, e, w, in, out), or one of the commands look, help, or quit.
@@ -126,6 +138,16 @@ int readLocations() {
     return 1;
 }
 
+void move(int direction, int *currentLocationId) {
+    if (direction != 0) {
+        *currentLocationId = direction;
+        look(*currentLocationId);
+    } else {
+        printf("You can't go that way\n");
+    }
+}
+
+
 void processCommand(char *command, int *currentLocationId) {
     if (strcmp(command, "look") == 0) {
         look(*currentLocationId);
@@ -134,47 +156,17 @@ void processCommand(char *command, int *currentLocationId) {
     } else if (strcmp(command, "quit") == 0) {
         quit();
     } else if (strcmp(command, "n") == 0) {
-        if (locations[*currentLocationId].n != 0) {
-            *currentLocationId = locations[*currentLocationId].n;
-            look(*currentLocationId);
-        } else {
-            printf("You can't go that way\n");
-        }
+        move(locations[*currentLocationId].n, currentLocationId);
     } else if (strcmp(command, "s") == 0) {
-        if (locations[*currentLocationId].s != 0) {
-            *currentLocationId = locations[*currentLocationId].s;
-            look(*currentLocationId);
-        } else {
-            printf("You can't go that way\n");
-        }
+        move(locations[*currentLocationId].s, currentLocationId);
     } else if (strcmp(command, "e") == 0) {
-        if (locations[*currentLocationId].e != 0) {
-            *currentLocationId = locations[*currentLocationId].e;
-            look(*currentLocationId);
-        } else {
-            printf("You can't go that way\n");
-        }
+        move(locations[*currentLocationId].e, currentLocationId);
     } else if (strcmp(command, "w") == 0) {
-        if (locations[*currentLocationId].w != 0) {
-            *currentLocationId = locations[*currentLocationId].w;
-            look(*currentLocationId);
-        } else {
-            printf("You can't go that way\n");
-        }
+        move(locations[*currentLocationId].w, currentLocationId);
     } else if (strcmp(command, "in") == 0) {
-        if (locations[*currentLocationId].in != 0) {
-            *currentLocationId = locations[*currentLocationId].in;
-            look(*currentLocationId);
-        } else {
-            printf("You can't go that way\n");
-        }
+        move(locations[*currentLocationId].in, currentLocationId);
     } else if (strcmp(command, "out") == 0) {
-        if (locations[*currentLocationId].out != 0) {
-            *currentLocationId = locations[*currentLocationId].out;
-            look(*currentLocationId);
-        } else {
-            printf("You can't go that way\n");
-        }
+        move(locations[*currentLocationId].out, currentLocationId);
     } else {
         printf("I don't understand %s\n", command);
     }
