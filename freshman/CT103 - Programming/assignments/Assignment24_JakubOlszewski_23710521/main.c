@@ -74,13 +74,25 @@ int main() {
     printf("%s", locations[currentLocationId].description);
     printf("warning: this programs uses gets(), which is unsafe\n");
 
+    /**
+ * @brief Main game loop.
+ *
+ * This is the main game loop. It runs indefinitely until the user enters the 'quit' command.
+ * In each iteration of the loop, it prompts the user for a command, reads the command using gets(),
+ * and then processes the command using the processCommand() function.
+ */
     while (1) {
+        // The command entered by the user.
         char command[100];
+
+        // Prompt the user for a command.
         printf("> ");
+
+        // Read the command from the user. Note: gets() is unsafe and should be replaced with fgets().
         gets(command);
 
+        // Process the command entered by the user.
         processCommand(command, &currentLocationId);
-
     }
 
 }
