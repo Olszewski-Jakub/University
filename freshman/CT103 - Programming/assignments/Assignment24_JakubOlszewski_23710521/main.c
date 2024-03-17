@@ -40,7 +40,6 @@ int readLocations();
  */
 void move(int direction, int *currentLocationId);
 
-void move(int direction, int *currentLocationId);
 
 /**
  * @brief Processes a command entered by the user.
